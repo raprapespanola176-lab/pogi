@@ -1,1 +1,27 @@
-ayayayayayayay hahahaha
+import turtle
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+# Create turtle
+flower = turtle.Turtle()
+flower.shape("turtle")
+flower.color("magenta")
+flower.speed(10)
+
+# Draw flower petals
+for _ in range(36):
+    flower.circle(100, 60)   # Draw arc
+    flower.left(120)         # Turn to make petal
+    flower.circle(100, 60)
+    flower.left(10)          # Rotate for next petal
+
+# Draw stem
+flower.right(90)
+flower.color("green")
+flower.forward(300)
+
+# Hide turtle and finish
+flower.hideturtle()
+screen.mainloop()
