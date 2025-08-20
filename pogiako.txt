@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Milk Tea Shop</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f6f0; margin: 0; }
+        header { background: #a67873; color: #fff; padding: 1em; text-align: center; }
+        .container { display: flex; justify-content: space-around; margin: 2em; }
+        .menu, .cart { background: #fff; padding: 2em; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
+        .menu-item { margin-bottom: 1.5em; display: flex; align-items: center; }
+        .menu-item img { width: 80px; height: 80px; border-radius: 10px; margin-right: 1em; }
+        .menu-item button { background: #a67873; color: #fff; border: none; padding: 0.5em 1em; border-radius: 5px; cursor: pointer; }
+        .cart h2 { margin-top: 0; }
+        .cart-list { list-style: none; padding: 0; }
+        .cart-list li { margin-bottom: 0.5em; }
+        .checkout-btn { background: #f7c873; color: #fff; border: none; padding: 0.7em 1.5em; border-radius: 5px; cursor: pointer; margin-top: 1em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Milky Way Tea Shop</h1>
+    </header>
+    <div class="container">
+        <div class="menu">
+            <h2>Menu</h2>
+            <div class="menu-item" data-name="Classic Milk Tea" data-price="80">
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=80&q=80" alt="Classic Milk Tea">
+                <div>
+                    <strong>Classic Milk Tea</strong><br>
+                    ₱80<br>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Taro Milk Tea" data-price="90">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=80&q=80" alt="Taro Milk Tea">
+                <div>
+                    <strong>Taro Milk Tea</strong><br>
+                    ₱90<br>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Okinawa Milk Tea" data-price="100">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=80&q=80" alt="Okinawa Milk Tea">
+                <div>
+                    <strong>Okinawa Milk Tea</strong><br>
+                    ₱100<br>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <ul class="cart-list"></ul>
+            <div><strong>Total: ₱<span class="cart-total">0</span></strong></div>
+            <button class="checkout-btn">Checkout</button>
+            <div class="thankyou" style="display:none; color: #a67873; margin-top:1em;">Thank you for your order!</div>
+        </div>
+    </div>
+    <script>
+        const cart = [];
+        const cartList = document.querySelector('.cart-list');
+        const cartTotal = document.querySelector('.cart-total');
+        const thankyou = document.querySelector('.thankyou');
+
+        function updateCart() {
+            cartList.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x${item.qty} - ₱${item.price * item.qty}`;
+                cartList.appendChild(li);
+                total += item.price * item.qty;
+            });
+            cartTotal.textContent = total;
+        }
+
+        document.querySelectorAll('.menu-item button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const parent = btn.closest('.menu-item');
+                const name = parent.getAttribute('data-name');
+                const price = parseInt(parent.getAttribute('data-price'));
+                const found = cart.find(item => item.name === name);
+                if (found) {
+                    found.qty += 1;
+                } else {
+                    cart.push({ name, price, qty: 1 });
+                }
+                updateCart();
+                thankyou.style.display = 'none';
+            });
+        });
+
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            if (cart.length === 0) return;
+            cart.length = 0;
+            updateCart();
+            thankyou.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
