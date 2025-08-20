@@ -1,44 +1,184 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>Modern Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+            color: #222;
+        }
+        nav {
+            background: #6366f1;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: #c7d2fe;
+        }
+        .hero {
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(99,102,241,0.16);
+        }
+        .card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #6366f1;
+        }
+        .card .title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .card .content {
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+        }
+        footer {
+            background: #6366f1;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            margin-top: 3rem;
+        }
+        .social {
+            margin-top: 0.5rem;
+        }
+        .social a {
+            color: #fff;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .social a:hover {
+            color: #c7d2fe;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .card-container {
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="card-container">
+    <nav>
+        <div class="logo">ModernSite</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Welcome to Your Modern Dashboard</h1>
+        <p>Experience a sleek, responsive, and interactive website design. Built for performance and style.</p>
+    </section>
+    <div class="card-container" id="features">
         <div class="card">
-            <h1 class="title">Title</h1>
-            <div class="content">
-                
-            </div>
+            <div class="icon">🌟</div>
+            <h2 class="title">Fast Performance</h2>
+            <div class="content">Optimized for speed and efficiency, ensuring a smooth user experience.</div>
         </div>
         <div class="card">
-            <h1 class="title">Title</h1>
-            <div class="content">
-                
-            </div>
+            <div class="icon">📱</div>
+            <h2 class="title">Mobile Friendly</h2>
+            <div class="content">Responsive design adapts seamlessly to any device or screen size.</div>
         </div>
         <div class="card">
-            <h1 class="title">Title</h1>
-            <div class="content">
-                
-            </div>
+            <div class="icon">🔒</div>
+            <h2 class="title">Secure</h2>
+            <div class="content">Built with best practices for privacy and security in mind.</div>
         </div>
         <div class="card">
-            <h1 class="title">Title</h1>
-            <div class="content">
-                
-            </div>
+            <div class="icon">⚡</div>
+            <h2 class="title">Modern UI</h2>
+            <div class="content">Utilizes the latest design trends for a clean and attractive look.</div>
         </div>
         <div class="card">
-            <h1 class="title">Title</h1>
-            <div class="content">
-                
-            </div>
+            <div class="icon">🛠️</div>
+            <h2 class="title">Easy Customization</h2>
+            <div class="content">Easily adapt and expand features to suit your needs.</div>
         </div>
     </div>
+    <footer>
+        <div>© 2025 ModernSite. All rights reserved.</div>
+        <div class="social">
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📸</a>
+        </div>
+    </footer>
 </body>
 </html>
